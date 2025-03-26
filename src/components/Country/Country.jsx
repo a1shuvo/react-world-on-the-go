@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Country.css'
 
-const Country = ({ country, handleVisitedCountries }) => {
+const Country = ({ country, handleVisitedCountries, handleVisitedFlags }) => {
     const [visited, setVisited] = useState(false);
     const handleVisited = () => {
         setVisited(!visited);
@@ -13,7 +13,10 @@ const Country = ({ country, handleVisitedCountries }) => {
             <img src={country.flags.svg} width={300} alt="" />
             <p>Independent: {country.independent ? "Free" : "Not Free"}</p>
             <p>Population: {country.population}</p>
-            <button className={visited ? 'btn-visited' : 'btn-not-visited'} onClick={handleVisited}>{visited ? "Visited" : "Not Visited"}</button>
+            <button className={visited ? 'btn-visited' : 'btn-not-visited'} onClick={handleVisited}>{visited ? "Visited" : "Not Visited"}</button><br /><br />
+            <button onClick={()=>handleVisitedFlags(country.flags.png)}>
+                Add Flag
+            </button>
         </div>
     );
 };
